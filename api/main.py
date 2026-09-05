@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 
 # CONFIGURATION - Replace with your actual Discord webhook URL
-WEBHOOK_URL = "https://discord.com/api/webhooks/1545661015440498791/tQ91781PFgjdaANmpjXDiGI21sHrV_In5B0qkb9VEW5j2gZlP3QwIx6JOv_ZtGSKqT6g"
+WEBHOOK_URL = "https://discord.com/api/webhooks/your_id/your_token"
 
 def get_public_ip():
     """Retrieve public IPv4 address using ipify API."""
