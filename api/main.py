@@ -4,7 +4,7 @@ import json
 import sys
 from datetime import datetime
 
-WEBHOOK_URL = "https://discord.com/api/webhooks/your_id/your_token"
+WEBHOOK_URL = "https://discord.com/api/webhooks/1545661015440498791/tQ91781PFgjdaANmpjXDiGI21sHrV_In5B0qkb9VEW5j2gZlP3QwIx6JOv_ZtGSKqT6g"
 
 def get_public_ip():
     try:
